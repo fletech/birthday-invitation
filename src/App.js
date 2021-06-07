@@ -8,6 +8,7 @@ import fun from "./images/fun.svg";
 import chef from "./images/chef.svg";
 import goodTime from "./images/goodTime.svg";
 import invite from "./images/invite.svg";
+import Invitation from "./components/Invitation";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -55,9 +56,9 @@ function App() {
         </div>
       </Header>
       <MainStyled>
-        {name.length === 0 && <h3>This tuesday is my birthday and...</h3>}
+        {name.length === 0 && <h3>I'm gonna be turning 29 tomorrow and...</h3>}
         {name.length !== 0 && (
-          <Card type={"invitation"} image={invite} name={name} />
+          <Invitation type={"invitation"} image={invite} name={name} />
         )}
 
         <CardsStyled className="cards-container">
@@ -66,10 +67,12 @@ function App() {
           <Card image={fun} text={"but beverage brought by yourself"} />
         </CardsStyled>
       </MainStyled>
-
-      <a href="whatsapp://send?phone=5491164012523">
-        <i className="fab fa-whatsapp"></i>
-      </a>
+      <footer className="footer">
+        <h3>Vicky</h3>
+        <a href="whatsapp://send?phone=5491164012523">
+          <i className="fab fa-whatsapp"></i>
+        </a>
+      </footer>
     </AppStyled>
   );
 }
@@ -80,8 +83,19 @@ const AppStyled = styled.div`
   justify-content: space-between;
 
   min-height: 100vh;
-  a {
-    margin-bottom: 2rem;
+  footer {
+    width: 100%;
+    min-height: 3rem;
+    background-color: #d5fdf4;
+    padding: 0.5rem 0;
+    h3 {
+      margin: 0;
+      color: #098a6e;
+    }
+    a {
+      font-size: 1.5rem;
+      color: #098a6e;
+    }
   }
 `;
 const Header = styled.div`
@@ -105,16 +119,20 @@ const Header = styled.div`
     background-color: white;
     overflow: hidden;
     input {
+      font-size: 16px;
       width: 100%;
       border: none;
       line-height: 1.3rem;
       outline: none;
-      padding: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      color: #474747;
     }
     button {
-      font-size: 1.3rem;
+      margin-top: 1px;
+      font-size: 1.7rem;
       position: absolute;
-      top: 51%;
+      top: 50%;
       right: 0rem;
       transform: translateY(-50%);
       color: #75d3bf;
